@@ -1,7 +1,11 @@
 import { useState } from "react";
+import Logo from "../assets/img/Logo.png";
 
 const Title = () => (
-       <h1>FoodByte</h1>
+       <img
+        className="logo" 
+        alt="logo"
+        src={Logo}/>
 );
 
 const Header = () => {

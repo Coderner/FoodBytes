@@ -3,12 +3,17 @@
     margin:0;
 }
 
+/* Header styling */
 .header{
     display:flex;
     justify-content: space-between;
-    margin:15px;
-    padding:5px;
+    margin:15px 30px;
     border:1px solid black;
+}
+
+.logo{
+   height:66px;
+   margin-inline:30px;
 }
 
 .nav-items>ul{
