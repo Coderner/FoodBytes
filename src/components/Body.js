@@ -3,7 +3,7 @@ import {useState, useEffect} from "react";
 import Shimmer from "./Shimmer";
 
 function filterData(searchText, restaurants){
-  const filterData= restaurants.filter((restaurant)=> restaurant.info.name.includes(searchText));
+  const filterData= restaurants.filter((restaurant)=> restaurant?.info?.name?.includes(searchText));
   return filterData;
 }
 
@@ -26,8 +26,7 @@ const Body = () =>{
         console.log(allRestaurants);
     }
     
-    return (allRestaurants.length===0)?<Shimmer/>:(
-        (filteredRestaurants.length===0)?<h1>No Restaurant matches your Search</h1>:(
+    return (allRestaurants?.length===0)?<Shimmer/>:(
         <>
             <div className="search-container">
                  <input 
@@ -45,14 +44,15 @@ const Body = () =>{
                  }}>
                     Search</button>
             </div>
-            <div className="restraunt-list">
+            {(filteredRestaurants?.length===0)?<h1>No Restaurant matches your Search</h1>:
+             <div className="restraunt-list">
              { filteredRestaurants.map((restraunt)=>{
-                 return <RestaurantCard {...restraunt.info} key={restraunt.info.id}/>
+                 return <RestaurantCard {...restraunt.info} key={restraunt?.info?.id}/>
              })}
             </div>
-
+            }
         </>
-    ))
+    )
 }
 
 export default Body;
