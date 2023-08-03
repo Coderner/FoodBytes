@@ -19,3 +19,20 @@
 .nav-items>ul>li{
     padding:15px;
 }
+
+.restraunt-list{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+
+.card{
+    width:250px;
+    height:400px;
+    margin:30px;
+}
+
+.card>img{
+    width:100%;
+    height:50%;
+}
