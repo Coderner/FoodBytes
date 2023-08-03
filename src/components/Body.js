@@ -8,8 +8,8 @@ function filterData(searchText, restaurants){
 }
 
 const Body = () =>{
-
-    const [restaurants,setRestaurants] = useState([]);
+    const [allRestaurants,setAllRestaurants] =  useState([]);
+    const [filteredRestaurants,setFilteredRestaurants] = useState([]);
     const [searchText,setSearchText] = useState("");
 
     useEffect(()=>{
@@ -20,11 +20,14 @@ const Body = () =>{
         const data= await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json= await data.json();
         console.log(json);
-        setRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        console.log(restaurants);
+        setAllRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
+        console.log(allRestaurants);
     }
     
-    return (restaurants.length===0)?<Shimmer/>:(
+    return (allRestaurants.length===0)?<Shimmer/>:(
+        (filteredRestaurants.length===0)?<h1>No Restaurant matches your Search</h1>:(
         <>
             <div className="search-container">
                  <input 
@@ -37,19 +40,19 @@ const Body = () =>{
                   }}
                  />
                  <button className="search-btn" onClick={()=>{
-                     const data= filterData(searchText,restaurants);
-                     setRestaurants(data);
+                     const data= filterData(searchText,allRestaurants);
+                     setFilteredRestaurants(data);
                  }}>
                     Search</button>
             </div>
             <div className="restraunt-list">
-             { restaurants.map((restraunt)=>{
+             { filteredRestaurants.map((restraunt)=>{
                  return <RestaurantCard {...restraunt.info} key={restraunt.info.id}/>
              })}
             </div>
 
         </>
-    )
+    ))
 }
 
 export default Body;
