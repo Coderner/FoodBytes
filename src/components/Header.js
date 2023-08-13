@@ -10,7 +10,7 @@ const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     
     return(
-       <div className="flex justify-between shadow-md">
+       <div className="flex justify-between shadow-md w-full">
         <Title/>
         <div className="nav-items">
           <ul className="flex py-10">
@@ -21,8 +21,12 @@ const Header = () => {
           </ul>
         </div>
         {
-          isLoggedIn?<button className="px-6" onClick={() => setIsLoggedIn(false)}>Logout</button>: 
-                     <button className="px-6" onClick={() => setIsLoggedIn(true)}>Login</button>
+          isLoggedIn?<button 
+                    className="my-8 mx-6 py-1 px-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md"
+                     onClick={() => setIsLoggedIn(false)}>Logout</button>: 
+                     <button 
+                     className="my-8 mx-6 py-1 px-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md"
+                     onClick={() => setIsLoggedIn(true)}>Login</button>
         }
        </div>
     )

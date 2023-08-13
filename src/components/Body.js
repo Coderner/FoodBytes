@@ -27,17 +27,19 @@ const Body = () =>{
     
     return (allRestaurants?.length===0)?(<Shimmer/>):(
         <>
-            <div className="search-container p-5 ">
+            <div className="search-container p-5 my-4 ">
                  <input 
                   type="text" 
-                  className="search-input" 
+                  className="py-1 px-3 rounded-md border-2 w-1/5 focus:bg-green-50" 
                   placeholder="Search" 
                   value={searchText}
                   onChange={(e)=>{
                     setSearchText(e.target.value)
                   }}
                  />
-                 <button className="search-btn" onClick={()=>{
+                 <button 
+                     className="mx-4 px-6 py-1 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md" 
+                     onClick={()=>{
                      const data= filterData(searchText,allRestaurants);
                      setFilteredRestaurants(data);
                  }}>
@@ -45,7 +47,7 @@ const Body = () =>{
             </div>
             
             
-             <div className="restraunt-list">
+             <div className="flex flex-wrap px-2">
              { filteredRestaurants?.map((restraunt)=>{
                  return (
                  <Link to={"/restaurant/"+ restraunt?.info?.id} key={restraunt?.info?.id}>
