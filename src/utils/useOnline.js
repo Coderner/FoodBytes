@@ -13,7 +13,7 @@ const useOnline = () =>{
       const handleOffline = ()=>{
         setIsOnline(false);
       }
-
+   
       window.addEventListener("online",handleOnline);
       window.addEventListener("offline",handleOffline);
 

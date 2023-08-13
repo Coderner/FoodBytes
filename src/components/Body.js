@@ -23,11 +23,11 @@ const Body = () =>{
     }
 
     const online=useOnline();
-    if(!online) return <h1>Offline!! Check your Internet connection</h1>
+    if(!online) return <h1>🔴 Offline!! Check your Internet connection</h1>
     
     return (allRestaurants?.length===0)?(<Shimmer/>):(
         <>
-            <div className="search-container">
+            <div className="search-container p-5 ">
                  <input 
                   type="text" 
                   className="search-input" 
