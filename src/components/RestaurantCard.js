@@ -3,7 +3,7 @@ const RestaurantCard = ({
     name,
     cuisines,
     cloudinaryImageId,
-    locality
+    locality,
 }) =>{
     return(
        <div className="w-60 p-2 m-3 h-96 shadow-md bg-red-50">
