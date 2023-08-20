@@ -3,11 +3,19 @@ import { useEffect, useState } from "react";
 import {RES_IMG} from "../components/config";
 import Shimmer from "./Shimmer";
 import useRestaurant from "../utils/useRestaurant";
+import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
 
 const RestaurantMenu = () =>{
     const {resId} = useParams();
    
     const restaurant = useRestaurant(resId);
+
+    const dispatch = useDispatch();
+
+    const addFoodItem = (item) =>{
+          dispatch(addItem(item));
+    }
 
     return (!restaurant)?<Shimmer/>:(
         <div className="flex">
@@ -27,9 +35,16 @@ const RestaurantMenu = () =>{
              <h1 className="text-xl font-semibold">Menu</h1>
              <ul className="my-4">
                {restaurant?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards?.map(
-                (item)=><li key={item?.card?.info?.id} className="flex justify-between font-medium" >
-                  <span>{item?.card?.info?.name}</span>
-                  <span>₹ {item?.card?.info?.price/100}</span></li>)}
+                (item)=><li key={item?.card?.info?.id} 
+                  className="flex justify-between font-medium p-2 my-1 border border-black" >
+                  <div className="flex">
+                  <img className="h-10 mx-1"
+                    src={RES_IMG+item?.card?.info?.imageId}/>
+                  {item?.card?.info?.name}
+                  </div>
+                  <button className="py-1 px-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md"
+                   onClick={()=>addFoodItem(item)}>Add</button>
+                </li>)}
              </ul>
            </div>
         </div>
