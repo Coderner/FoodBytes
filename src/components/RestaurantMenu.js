@@ -5,6 +5,7 @@ import Shimmer from "./Shimmer";
 import useRestaurant from "../utils/useRestaurant";
 import { addItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
+import {FaPlus} from "react-icons/fa";
 
 const RestaurantMenu = () =>{
     const {resId} = useParams();
@@ -42,8 +43,8 @@ const RestaurantMenu = () =>{
                     src={RES_IMG+item?.card?.info?.imageId}/>
                   {item?.card?.info?.name}
                   </div>
-                  <button className="py-1 px-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md"
-                   onClick={()=>addFoodItem(item)}>Add</button>
+                  <button className="py-1 px-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md flex"
+                   onClick={()=>addFoodItem(item)}>Add<FaPlus className="mt-1 mx-1"/></button>
                 </li>)}
              </ul>
            </div>

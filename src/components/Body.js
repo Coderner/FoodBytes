@@ -4,6 +4,7 @@ import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
+import {FaSearch} from "react-icons/fa";
 
 const Body = ({user}) =>{
     const [allRestaurants,setAllRestaurants] =  useState([]);
@@ -27,10 +28,10 @@ const Body = ({user}) =>{
     
     return (allRestaurants?.length===0)?(<Shimmer/>):(
         <>
-            <div className="search-container p-5 my-4 ">
+            <div className="search-container p-5 my-4 flex">
                  <input 
                   type="text" 
-                  className="py-1 px-3 rounded-md border-2 w-1/5 focus:bg-green-50" 
+                  className="py-1 px-3 rounded-md border-2 w-1/4 focus:bg-green-50" 
                   placeholder="Search" 
                   value={searchText}
                   onChange={(e)=>{
@@ -38,12 +39,12 @@ const Body = ({user}) =>{
                   }}
                  />
                  <button 
-                     className="mx-4 px-6 py-1 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md" 
+                     className="mx-4 px-6 py-1 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md flex" 
                      onClick={()=>{
                      const data= filterData(searchText,allRestaurants);
                      setFilteredRestaurants(data);
                  }}>
-                    Search</button>
+                    <FaSearch className="mt-1 mx-1"/>Search</button>
             </div>
             
             

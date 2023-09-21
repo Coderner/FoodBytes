@@ -2,6 +2,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import {RES_IMG} from "../components/config";
 import { clearCart } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
+import {FaRegTrashAlt} from "react-icons/fa";
 
 const Cart = () =>{
 
@@ -20,9 +21,9 @@ const Cart = () =>{
                   <div className="flex my-2">
                           <h1 className="text-xl">Total items in cart: {cartItems.length}</h1>
                           <button 
-                              className=" mx-6 py-1 px-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md"
+                              className=" mx-6 py-1 px-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md flex"
                               onClick={()=>handleClearCart()}>
-                              Clear Cart
+                              Clear Cart <FaRegTrashAlt className="mt-1 mx-2"/>
                           </button>
                   </div>
                   <div className="flex">
