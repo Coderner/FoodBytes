@@ -14,7 +14,7 @@ const Header = () => {
     const cartItems = useSelector(store => store.cart.items);
     
     return(
-       <div className="flex justify-between shadow-md w-full">
+       <div className="flex justify-between shadow-md w-full sticky top-0 bg-white">
         <Link to="/"><Title/></Link>
         <div className="nav-items">
           <ul className="flex py-10">
