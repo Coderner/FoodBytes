@@ -15,7 +15,7 @@ const Header = () => {
     
     return(
        <div className="flex justify-between shadow-md w-full">
-        <Title/>
+        <Link to="/"><Title/></Link>
         <div className="nav-items">
           <ul className="flex py-10">
             <Link to="/"><li className="px-2 hover:text-red-600 font-medium flex"><FaHouseUser className="mt-1 mx-2"/>Home</li></Link>
@@ -28,9 +28,11 @@ const Header = () => {
           isLoggedIn?<button 
                     className="my-8 mx-6 py-1 px-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md"
                      onClick={() => setIsLoggedIn(false)}>Logout</button>: 
+                     <Link to="/login">
                      <button 
-                     className="my-8 mx-6 py-1 px-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md flex"
-                     onClick={() => setIsLoggedIn(true)}><FaUser className="mt-1 mx-1"/>Login</button>
+                          className="my-8 mx-6 py-1 px-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md flex"
+                          onClick={() => setIsLoggedIn(true)}><FaUser className="mt-1 mx-1"/>Login</button>
+                     </Link>
         }
        </div>
     )
