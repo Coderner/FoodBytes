@@ -6,6 +6,7 @@ import useRestaurant from "../utils/useRestaurant";
 import { addItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
 import {FaPlus} from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const RestaurantMenu = () =>{
     const {resId} = useParams();
@@ -16,6 +17,12 @@ const RestaurantMenu = () =>{
 
     const addFoodItem = (item) =>{
           dispatch(addItem(item));
+          Swal.fire({
+            title: 'Added successfully!',
+            text: 'Item added to the cart successfully!!',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
     }
 
     return (!restaurant)?<Shimmer/>:(

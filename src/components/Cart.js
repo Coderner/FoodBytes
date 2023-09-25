@@ -3,6 +3,7 @@ import {RES_IMG} from "../components/config";
 import { clearCart } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
 import {FaRegTrashAlt} from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const Cart = () =>{
 
@@ -12,6 +13,12 @@ const Cart = () =>{
 
     const handleClearCart = () =>{
           dispatch(clearCart());
+          Swal.fire({
+            title: 'Empty Cart!',
+            text: 'Item removed from the cart successfully!!',
+            icon: 'info',
+            confirmButtonText: 'Ok'
+          })
     }
     return(
         <div className="m-5">
